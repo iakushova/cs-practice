@@ -45,6 +45,16 @@ class TestStats(unittest.TestCase):
         ])
         self.assertEqual(warmest_city(records), "Азов")
 
+    def test_spaces_and_comma_temperature(self):
+        record = parse_record(" Азов ; -3,5 ; 2026-01-09 ")
+        self.assertEqual(record["city"], "Азов")
+        self.assertEqual(record["temperature"], -3.5)
+        self.assertEqual(record["date"], "2026-01-09")
+
+    def test_empty_lines_are_skipped(self):
+        records = read_valid(["", "   ", "Азов;24.5;2026-07-01"])
+        self.assertEqual(len(records), 1)
+
 
 if __name__ == "__main__":
     unittest.main()
