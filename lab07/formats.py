@@ -64,13 +64,13 @@ def convert_value(value: str):
     except ValueError:
         pass
 
-    try:
-        return float(value)
-    except ValueError:
-        pass
+    if '.' in value:
+        try:
+            return float(value)
+        except ValueError:
+            pass
 
     return value
-
 
 def merge_by_key(rows: list[dict], extra: dict, key: str = "id") -> list[dict]:
     result = []
