@@ -1,6 +1,6 @@
 
 import numpy as np
-
+# Практическое занятие 08. Работа с массивами NumPy
 # Задание 1
 
 hours = np.arange(0, 24, 3)
